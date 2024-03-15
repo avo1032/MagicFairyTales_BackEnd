@@ -9,8 +9,13 @@ export class BookService {
   constructor(@InjectModel(Book.name) private bookModel: Model<Book>) {}
 
   async createBook(body: CreateBookDto): Promise<Book> {
-    const { title } = body;
-    const newBook = new this.bookModel({title});
+    const { title, thumbnail } = body;
+    const newBook = new this.bookModel({
+      title,
+      thumbnail,
+      views: 0,
+      isPublished: false,
+    });
     return newBook.save();
   }
 
