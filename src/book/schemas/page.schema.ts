@@ -4,6 +4,9 @@ import { Document } from 'mongoose';
 @Schema()
 export class Page extends Document {
   @Prop()
+  page: number;
+
+  @Prop()
   script: string;
 
   @Prop()

@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { Page, PageSchema } from './page.schema';
 
-@Schema()
+@Schema({ timestamps: true })
 export class Book extends Document {
   @Prop({ required: true })
   title: string;
@@ -18,6 +18,9 @@ export class Book extends Document {
 
   @Prop({ default: false })
   isPublished: boolean;
+
+  @Prop()
+  deletedAt?: Date;
 }
 
 export const BookSchema = SchemaFactory.createForClass(Book);
